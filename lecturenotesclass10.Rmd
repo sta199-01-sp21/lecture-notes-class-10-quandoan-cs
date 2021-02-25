@@ -50,16 +50,28 @@ xtabs(~ Treatment + Improved, data = Arthritis) %>%
 
 - How many patients were enrolled in the clinical trial?
 
+  84 patients, through the sum.
+  
 - What is the probability a randomly selected patient received the placebo?
 
+  43 sum of people who receive placebo/84 total people. (Marginal Probability.)
+  51%
+  
 - What is the probability a randomly selected patient received the placebo
   and had a marked improvement?
+  
+  7 marked for placebo/ 84 total people. (8.3%)
   
 - What is the probability a randomly selected patient received the placebo
   and the treatment?
   
+  Not possible, disjoint probability because not possible. 
+  
+  
 - What is the probability a randomly selected patient had some improvement or
   was on the treatment?
+  
+  41/84 because it doesn't have to be both of them.
 
 ## Using computer simulations to calculate probabilities
 
@@ -72,9 +84,16 @@ a vector called `marbles`.
 marbles <- c("red", "red", "white", "red", "blue", "blue", "red", "blue")
 ```
 
+c command to combine things together into a vector.
+
 Suppose we draw a single marble from our imaginary box, where all the marbles
-are equally likely to be selected. What is the probability the marble is blue? 
+are equally likely to be selected. What is the probability the marble is blue?
+
+3/8
+
 How about white?
+
+1/8
 
 We can simulate this "drawing" with the `sample()` function.
 
@@ -102,6 +121,9 @@ prop.table(counts)
 
 How close is this value to the "true" probability?
 
+Very close, law of large numbers allow the numbers to be even closer to the 
+true proportion if we increase our sample size.
+
 **To summarize our process:**
 
 1. We defined the sample space for our experiment - `marbles`
@@ -117,6 +139,8 @@ color if we make two draws with replacement? We haven't discussed how to
 compute this theoretically yet, but this is what computers are good at.
 
 Before we do this, what is your guess as to what the probability will be?
+
+Under 50%.
 
 We'll still use `sample()` to run our simulation many times, but we'll
 use `dplyr` functions to compute the relative frequencies.
